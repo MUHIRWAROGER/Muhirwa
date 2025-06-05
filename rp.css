@@ -1,0 +1,198 @@
+body{
+  
+    background-color: rgba(0, 0, 0, 0.897);
+    font-family: sans-serif;
+    color: wheat;
+}
+h1{
+    margin-left: 600px;  
+}
+.but button{
+    padding: 14px;
+     border-radius: 70px ;
+     font-size: 20px;
+}
+
+form{
+    border: 1px solid;
+    padding: 80px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    
+    margin-left: 500px;
+    box-shadow:
+        0 14px 10px rgba(38, 0, 255, 0.747),
+        0 0 25px rgba(255, 0, 13, 0.945),
+        0 0 10px rgba(111, 0, 255, 0.705);
+    
+}
+
+input{
+    padding: 20PX;
+    border-radius: 6px;
+    border-style: none;
+   
+
+    background-color: rgba(100, 100, 100, 0.2);
+   color: rgba(251, 251, 255, 0.87);
+   
+}
+
+button{
+    width: 150px;
+    padding: 5px;
+    border-radius: 8px;
+    border-style: none;
+    cursor: pointer;
+    background-color: brown;
+    transition: 0.5s ease , transform 0.3s ease;
+    margin-left: 30px;
+}
+button:hover{
+    background-color: blue;
+    transform: scale(1.1);
+    
+}
+.del button{
+    background-color: blue;
+    transition: 0.5s ease , transform 0.3s ease;
+    width: 150px;
+    padding: 5px;
+    border-radius: 8px;
+    border-style: none;
+    margin-left: 30px;
+    
+}
+.del button:hover{
+    background-color: brown; 
+    transform: scale(1.1); 
+}
+
+.slide-in.from-buttom{
+  transform: translatey(100px);
+}
+.slide-in.from-top{
+    transform:translatey(-50px);
+}
+.slide-in {
+    opacity: 0;
+    transform: translatex(100px);
+    transition: all 2s ease-out;
+    will-change: transform, opacity;
+  }
+  .slide-in.from-left {
+    transform: translatex(-100px);
+  }
+  .slide-in.from-right {
+    transform: translateX(100px);
+  }
+    
+  .slide-in.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+
+
+  #Userlist{
+    margin-left: 500px;
+  }
+
+  .ro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid;
+    padding: 17px;
+    border-radius: 11px;
+    width: 450px;
+  
+}
+
+@media (max-width: 768px) {
+  h1 {
+    margin-left: 0;
+    text-align: center;
+    font-size: 22px;
+  }
+  form {
+    width: 95%;
+    min-width: 0;
+    margin-left: 0;
+    padding: 30px 10px;
+    box-sizing: border-box;
+  }
+  .ro {
+    width: 95%;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+    font-size: 15px;
+  }
+  .ro > * {
+    font-size: 15px;
+    word-break: break-word;
+  }
+  #Userlist {
+    margin-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .but button, button, .del button {
+    width: 100%;
+    margin-left: 0;
+    font-size: 18px;
+    padding: 10px;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+    z-index: 1000;
+    padding: 10px 0;
+    font-size: 15px;
+  }
+  html{
+    overflow-x: hidden;
+  }
+}
+footer {
+  background-color: #333;
+  text-align: center;
+  position: relative; /* Not fixed, so it stays below all content */
+  left: unset;
+  bottom: unset;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
+  font-size: 15px;
+  margin-top: 40px;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.social-icon i {
+  font-size: 30px;
+  color: black;
+  transition: color 0.3s, transform 0.3s;
+}
+.social-icon:hover i {
+  color: rgba(255, 0, 13, 0.945);
+  transform: scale(1.1);
+}
+.social-icon {
+  text-decoration: none;
+}

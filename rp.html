@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Operation</title>
+    <link rel="stylesheet" href="rp.css">
+    <script src="rp.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section class="slide-in from-right">
+    <p>Back to the main page</p>
+</section>
+    <section class="slide-in from-left">
+    <div class="but">
+    <button><a href="ro - copy.html" style="color: white; text-decoration: none;">Back</a></button>
+    </section>
+</div>
+    <section class="slide-in from-top">
+    <h1>ADD USER</h1><br><br>
+</section>
+    <section class="slide-in from-buttom">
+    <form id="Userform">
+        <input type="text" id="name" placeholder="enter name"><br><br>
+        <input type="email" id="email" placeholder="enter email"><br><br>
+        <button type="submit">add user</button>
+    </form>
+    </section>
+
+    <ul id="Userlist"></ul>
+
+    <footer>
+  
+  <p>Follow me:</p>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/regor.rumor" class="social-icon" target="">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://x.com/RogerMuhirwa" class="social-icon" target="">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/rumo_ru208/" class="social-icon" target="">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://github.com/MUHIRWAROGER" class="social-icon" target="">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+<br><b></b>
+  <p>© Roger Muhirwa</p>
+</footer>
+<script>
+    const Inputname = document.getElementById('name');
+    const Inputemail = document.getElementById('email');
+    const form = document.getElementById('Userform');
+    const Userlist = document.getElementById('Userlist');
+
+    let Users=[];
+
+    document.addEventListener('submit',function(e){
+        e.preventDefault();
+
+       
+
+        const name=Inputname.value.trim();
+        const email =Inputemail.value.trim();
+        if (!name || !email) return;
+
+        const user= { id: Date.now() ,name ,email };
+
+        Users.push(user);
+        readerUser();
+        form.reset();
+    });
+
+    function readerUser(){
+        Userlist.innerHTML="";
+        
+        const heading = document.createElement('h2');
+heading.textContent = 'USER DECLARED';
+Userlist.appendChild(heading);
+
+        
+
+
+    Users.forEach(user =>{
+        const li=document.createElement('li');
+        li.innerHTML=`
+       
+            
+            <br><br>
+             <div class="ro">
+            <span> ${user.name} (${user.email})</span><br><br>
+       
+            
+            <button onclick="Edit(${user.id})">edit</button><div class="del">
+                <button onclick="Delete(${user.id})">delete</button>
+                </div>
+                </div>
+        `;
+
+        Userlist.appendChild(li);
+    });
+    }
+
+    function Delete(id){
+    Users= Users.filter(user=>user.id!== id);
+    readerUser();
+    }
+
+    function Edit(id){
+        const user=Users.find(user=>user.id===id);
+        if (!user) return;
+
+        Inputname.value=user.name;
+        Inputemail.value=user.email;
+
+       Users= Users.filter(u => u.id !== id);
+        readerUser();
+
+    }
+
+   
+  
+</script>
+
+
+
+</body>
+</html>
