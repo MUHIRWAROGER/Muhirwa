@@ -7,138 +7,133 @@
     <title>Crud Operation</title>
     <link rel="stylesheet" href="rp.css">
     <script src="rp.js"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <section class="slide-in from-right">
-    <p>Back to the main page</p>
-</section>
-    <section class="slide-in from-left">
-    <div class="but">
-    <button><a href="ro - copy.html" style="color: white; text-decoration: none;">Back</a></button>
-    </section>
-</div><section class="slide-in from-right">
-<h2 style="text-align: center;">THIS IS ONE OF MY PROJECT</h2>
-</section>
-    <section class="slide-in from-top">
-    <h1>ADD USER</h1><br><br>
-</section>
-    <section class="slide-in from-buttom">
-    <form id="Userform">
-        <input type="text" id="name" placeholder="enter name"><br><br>
-        <input type="email" id="email" placeholder="enter email"><br><br>
-        <button type="submit">add user</button>
-    </form>
-    </section>
+<div id="loader">
+  <div class="pulse-dot"></div>
 
-    <ul id="Userlist"></ul>
- 
+</div>
 
+  <div id="content" style="display: none;">
+    <div class="section" id="back-section">
+      <section class="slide-in from-right">
+        <p>Back to the main page</p>
+      </section>
+      <section class="slide-in from-left">
+        <div class="but">
+          <button><a href="index.html" style="color: white; text-decoration: none;">Back</a></button>
+        </div>
+      </section>
+    </div>
 
-    <section id="project-description">
-    <h1>What this project does</h1>
-    <p>
-        This simple app lets you add users by entering their name and email. Just fill in the form and click "Add User" — your input will appear below in a list. It's a demo of how user data can be collected and displayed instantly on a webpage.
-    </p>
-</section>
+    <div class="section" id="project-title-section">
+      <section class="slide-in from-right">
+        <h2 style="text-align: center;">THIS IS ONE OF MY PROJECT</h2>
+      </section>
+    </div>
+
+    <div class="section" id="add-user-section">
+      <section class="slide-in from-top">
+        <h1>ADD USER</h1><br><br>
+      </section>
+      <section class="slide-in from-buttom">
+        <form id="Userform">
+          <input type="text" id="name" placeholder="enter name"><br><br>
+          <input type="email" id="email" placeholder="enter email"><br><br>
+          <button type="submit">add user</button>
+        </form>
+      </section>
+      <ul id="Userlist"></ul>
+    </div>
+
+    <div class="section" id="project-description-section">
+      <section id="project-description">
+        <h1>What this project does</h1>
+        <p>
+          This simple app lets you add users by entering their name and email. Just fill in the form and click "Add User" — your input will appear below in a list. It's a demo of how user data can be collected and displayed instantly on a webpage.
+        </p>
+      </section>
+    </div>
+
     <footer>
-  
- <footer class="footer">
-  <p>Follow me:</p>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/regor.rumor" class="social-icon" target="_blank" rel="noopener noreferrer">
-      <i class="fab fa-facebook"></i>
-    </a>
-    <a href="https://x.com/RogerMuhirwa" class="social-icon" target="_blank" rel="noopener noreferrer">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://www.instagram.com/rumo_ru208/" class="social-icon" target="_blank" rel="noopener noreferrer">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://github.com/MUHIRWAROGER" class="social-icon" target="_blank" rel="noopener noreferrer">
-      <i class="fab fa-github"></i>
-    </a>
+      <p>Follow me:</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/regor.rumor" class="social-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://x.com/RogerMuhirwa" class="social-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/rumo_ru208/" class="social-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/MUHIRWAROGER" class="social-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <br>
+      <p>© Roger Muhirwa</p>
+    </footer>
   </div>
-  <br>
-  <p>© Roger Muhirwa</p>
-</footer>
-
-<script>
+  <script>
     const Inputname = document.getElementById('name');
     const Inputemail = document.getElementById('email');
     const form = document.getElementById('Userform');
     const Userlist = document.getElementById('Userlist');
 
-    let Users=[];
+    let Users = [];
 
-    document.addEventListener('submit',function(e){
-        e.preventDefault();
-
-       
-
-        const name=Inputname.value.trim();
-        const email =Inputemail.value.trim();
-        if (!name || !email) return;
-
-        const user= { id: Date.now() ,name ,email };
-
-        Users.push(user);
-        readerUser();
-        form.reset();
+    document.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = Inputname.value.trim();
+      const email = Inputemail.value.trim();
+      if (!name || !email) return;
+      const user = { id: Date.now(), name, email };
+      Users.push(user);
+      readerUser();
+      form.reset();
     });
 
-    function readerUser(){
-        Userlist.innerHTML="";
-        
-        const heading = document.createElement('h2');
-heading.textContent = 'USER DECLARED';
-Userlist.appendChild(heading);
-
-        
-
-
-    Users.forEach(user =>{
-        const li=document.createElement('li');
-        li.innerHTML=`
-       
-            
-            <br><br>
-             <div class="ro">
+    function readerUser() {
+      Userlist.innerHTML = "";
+      const heading = document.createElement('h2');
+      heading.textContent = 'USER DECLARED';
+      Userlist.appendChild(heading);
+      Users.forEach(user => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <br><br>
+          <div class="ro">
             <span> ${user.name} (${user.email})</span><br><br>
-       
-            
             <button onclick="Edit(${user.id})">edit</button><div class="del">
-                <button onclick="Delete(${user.id})">delete</button>
-                </div>
-                </div>
+              <button onclick="Delete(${user.id})">delete</button>
+            </div>
+          </div>
         `;
-
         Userlist.appendChild(li);
-    });
+      });
     }
 
-    function Delete(id){
-    Users= Users.filter(user=>user.id!== id);
-    readerUser();
+    function Delete(id) {
+      Users = Users.filter(user => user.id !== id);
+      readerUser();
     }
 
-    function Edit(id){
-        const user=Users.find(user=>user.id===id);
-        if (!user) return;
-
-        Inputname.value=user.name;
-        Inputemail.value=user.email;
-
-       Users= Users.filter(u => u.id !== id);
-        readerUser();
-
+    function Edit(id) {
+      const user = Users.find(user => user.id === id);
+      if (!user) return;
+      Inputname.value = user.name;
+      Inputemail.value = user.email;
+      Users = Users.filter(u => u.id !== id);
+      readerUser();
     }
+window.addEventListener("load", () => {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("content").style.display = "block";
+});
 
-   
   
-</script>
-
-
-
+  </script>
 </body>
 </html>
