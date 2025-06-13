@@ -321,24 +321,29 @@ html {
   color: rgb(203, 66, 20);
 }
 .parp {
-  font-size: 25px;
-  margin-left: 300px;
+  font-size: 20px;
+  margin-left: 150px;
   margin-top: 100px;
   gap: 300px;
   text-shadow: 0 14px 10px rgba(38, 0, 255, 0.747), 0 0 25px rgba(255, 0, 13, 0.945), 0 0 10px rgba(111, 0, 255, 0.705);
 }
 .slide-in {
   opacity: 0;
-  transform: translateX(100px);
-  transition: all 1s ease-out;
-  will-change: transform, opacity;
+  transform: translateY(100px);
+  transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 4s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.slide-in.from-left { transform: translateX(-100px); }
-.slide-in.from-right { transform: translateX(100px); }
-.slide-in.from-buttom { transform: translateY(100px); }
+
+.slide-in.from-left {
+  transform: translateX(-40px);
+}
+
+.slide-in.from-right {
+  transform: translateX(40px);
+}
+
 .slide-in.visible {
   opacity: 1;
-  transform: translateX(0) translateY(0);
+  transform: none;
 }
 footer {
   background-color: #333;
@@ -433,6 +438,7 @@ footer {
     text-align: center;
     padding: 15px;
     margin: 0;
+    font-size: 18px;
   }
   .r, .contact {
     background-color: rgba(255, 255, 255, 0.05);
@@ -491,19 +497,24 @@ footer {
     color: white; 
    }
   .menu {
-    display: none;
-    position: fixed;
-    top: 6rem;
-    left: 50%;
-    width: 60%;
-    height: 35%;
-    background-color: rgba(21, 20, 20, 0.959);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    z-index: 1000;
-  }
+  display: none;
+  position: fixed;
+  top: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 35%;
+  background-color: rgba(21, 20, 20, 0.6); /* semi-transparent */
+  backdrop-filter: blur(10px); /* 🔍 blur effect */
+  -webkit-backdrop-filter: blur(10px); /* for Safari support */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border-radius: 12px; /* optional: make it rounded */
+  z-index: 1000;
+}
+
   .menu.active {
     display: flex;
   }
@@ -514,6 +525,10 @@ footer {
   .skill, .skillb, .skillc{
     margin-left:0 ;
     max-width: 300px;
+  }
+  .glow-text{
+    font-size:18px;
+    margin-top: 20px;
   }
 }
 
@@ -590,3 +605,113 @@ footer {
     opacity: 1;
   }
  }
+
+
+ @keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+h1 {
+  font-family: Arial, sans-serif;
+  color: #7a5230;
+}
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+ @keyframes fadeIn{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+ }
+
+
+ /* Responsive for small laptops and tablets */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .home, .about, .skills-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 5%;
+    gap: 25px;
+  }
+  .pic img, .about img {
+    width: 80%;
+    max-width: 250px;
+    height: auto;
+  }
+  .pa, .about-content, .skills-text, .skills-container {
+    width: 90%;
+    text-align: center;
+    padding: 0 3%;
+    font-size: 1.1em;
+  }
+  .nav {
+    gap: 15px;
+  }
+  .bar, .barb, .barc {
+    width: 220px;
+  }
+  .skill, .skillb, .skillc {
+    margin-left: 0;
+    max-width: 350px;
+    font-size: 1em;
+  }
+  .r, .contact {
+    width: 320px;
+    padding: 18px;
+  }
+  .pro {
+    margin-left: 200px;
+    margin-top: 100px;
+    height: 180px;
+  }
+  h1, .about h1 {
+    font-size: 28px;
+  }
+  .parp {
+    font-size: 18px;
+    margin-left: 100px;
+    margin-top: 40px;
+    gap: 100px;
+  }
+}
+
+.glow-text {
+  display: block;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  font-size: 1.5em;
+  color: #fffbe7;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 14px 10px rgba(38, 0, 255, 0.747), 0 0 25px rgba(255, 0, 13, 0.945), 0 0 10px rgba(111, 0, 255, 0.705);
+  
+
+  background-clip: text;
+  filter: brightness(1.2);
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow: 0 14px 10px rgba(38, 0, 255, 0.747), 0 0 25px rgba(255, 0, 13, 0.945), 0 0 10px rgba(111, 0, 255, 0.705);
+    filter: brightness(1.2);
+  }
+  to {
+    text-shadow: 0 14px 10px rgba(38, 0, 255, 0.747), 0 0 25px rgba(255, 0, 13, 0.945), 0 0 10px rgba(111, 0, 255, 0.705);
+    filter: brightness(1.5);
+  }
+}
