@@ -26,13 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const toggle = document.querySelector(".toggle-button");
   const menu = document.querySelector(".menu");
+  const header = document.querySelector("header");
 
-  if (toggle && menu) {
+  if (toggle && menu && header) {
     toggle.addEventListener("click", () => {
       menu.classList.toggle("active");
+      menu.classList.toggle("blur-bg", menu.classList.contains("active"));
+      header.classList.toggle("blur-bg", menu.classList.contains("active"));
+    });
+    // Hide menu and remove blur when a nav link is clicked (for mobile)
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active', 'blur-bg');
+        header.classList.remove('blur-bg');
+      });
     });
   }
 });
+
+document.querySelectorAll('.menu a').forEach(link => {
+     link.addEventListener('click', () => {
+       menu.classList.remove('active');
+     });
+   });
+
 
 window.addEventListener("load", () => {
   document.getElementById("loader").style.display = "none";

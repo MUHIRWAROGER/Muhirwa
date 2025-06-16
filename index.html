@@ -11,7 +11,7 @@
 </head>
 <body>
   <div id="loader">
-    <h1>WELLCOME TO ROGER'S PORTIFOLIO</h1>
+    <h1>WELCOME TO ROGER'S PORTIFOLIO</h1>
   <div class="spinner-ring">
     <img src="re.ico" alt="Logo" class="logo" />
   </div>
@@ -120,15 +120,18 @@
               </div>
             </section>
           </div>
+          
+          <div class="mn">
           <section class="slide-in from-buttom">
           <div class="skills-text">
             <p>
               I specialize in front-end development and have experience building responsive,
               user-friendly websites and web apps. Below are some of the tools and languages I'm proficient in:
             </p>
+               </div>
             </section>
-             </div>
-                </div>
+          
+              
       
             <section class="slide-in from-buttom">
             <ul class="skills-list">
@@ -138,11 +141,12 @@
               <li>✅ Version Control: Git & GitHub</li>
             </ul>
             </section>
+            </div>
               </div>
-       
-     
-  
-  </div>
+       </div>
+           </div>
+
+           </div>
 
   <div class="section" id="project-section">
     <section class="slide-in from-buttom">
@@ -171,13 +175,18 @@
     <div class="body">
       <section class="slide-in from-left">
         <div class="r">
-       <form action="https://formspree.io/f/xdkzgvkz" method="POST">
+    <form action="https://formspree.io/f/xdkzgvkz" method="POST">
   <input type="text" name="name" placeholder="Enter your name" required /><br />
   <input type="email" name="email" placeholder="Enter your email" required /><br /><br />
   <textarea name="message" placeholder="Your message" required></textarea><br /><br />
 
+  <input type="hidden" name="_next" value="https://roger-muhirwa.netlify.app/thank-you">
+  <input type="hidden" name="_subject" value="New message from your portfolio!">
+  <input type="hidden" name="_captcha" value="false">
+
   <input type="submit" value="Send Message" />
 </form>
+
 
         </div>
       </section>
@@ -220,6 +229,37 @@
   document.getElementById("loader").style.display = "none";
   document.getElementById("content").style.display = "block";
 });
+
+
+
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function (e) {
+    const name = form.querySelector("input[name='name']").value.toLowerCase();
+    const email = form.querySelector("input[name='email']").value.toLowerCase();
+
+    if (!email.includes(name.split(" ")[0])) {
+      e.preventDefault();
+      alert("Your email doesn't seem to match your name. Please enter valid user name and emaill");
+    }
+  });
+
+
+ 
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        window.location.href = "https://roger-muhirwa.netlify.app/thank-you.html";
+      } else {
+        alert("There was a problem submitting your form.");
+      }
+    });
+  });
+
 
 </script>
 

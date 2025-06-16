@@ -18,11 +18,21 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: rgba(21, 20, 20, 0.667);
+  
+   background-color: rgba(21, 20, 20, 0.6); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
   position: fixed;
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+header.blur-bg {
+  background-color: rgba(21, 20, 20, 0.6) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: backdrop-filter 0.3s, background-color 0.3s;
 }
 
 .name h1 {
@@ -300,7 +310,7 @@ html {
 .skills-text {
   max-width: 600px;
   font-size: 18px;
-  line-height: 1.6;
+  
 }
 .but button {
   background-color: gainsboro;
@@ -420,11 +430,14 @@ footer {
     max-width: 300px;
     height: auto;
   }
-  .pa, .about-content, .skills-text, .skills-container {
+  .pa, .about-content,  .skills-container {
     width: 100%;
     text-align: center;
     padding: 0 5%;
+  
   }
+  
+
   form input, form textarea {
     width: 100%;
     padding: 12px;
@@ -438,9 +451,9 @@ footer {
     text-align: center;
     padding: 15px;
     margin: 0;
-    font-size: 18px;
+    font-size: 15px;
   }
-  .r, .contact {
+   .r, .contact {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 10px;
@@ -497,16 +510,15 @@ footer {
     color: white; 
    }
   .menu {
-  display: none;
+ display: none;
   position: fixed;
   top: 6rem;
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
-  height: 35%;
-  background-color: rgba(21, 20, 20, 0.6); /* semi-transparent */
-  backdrop-filter: blur(10px); /* 🔍 blur effect */
-  -webkit-backdrop-filter: blur(10px); /* for Safari support */
+
+  background-color: rgb(5, 5, 5); 
+ 
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -530,6 +542,12 @@ footer {
     font-size:18px;
     margin-top: 20px;
   }
+}
+
+header.blurred, .menu.blurred {
+  filter: blur(6px);
+  transition: filter 0.3s;
+  pointer-events: none;
 }
 
 /* Full-screen loader container */
@@ -664,6 +682,7 @@ h1 {
   .bar, .barb, .barc {
     width: 220px;
   }
+ 
   .skill, .skillb, .skillc {
     margin-left: 0;
     max-width: 350px;
@@ -686,6 +705,10 @@ h1 {
     margin-left: 100px;
     margin-top: 40px;
     gap: 100px;
+  }
+  .but{
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
